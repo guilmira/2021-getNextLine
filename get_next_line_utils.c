@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 09:29:58 by guilmira          #+#    #+#             */
-/*   Updated: 2021/06/07 12:19:39 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/06/07 14:48:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ char	*ft_strjoin_free_dup(char *s1, char *s2)
 	if (!s2)
 		return (s1);
 	if (!s1)
-	{
 		return (s2);
-	}
-	ptr = (char *) ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(*ptr));
+	ptr = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(*ptr));
 	if (!ptr)
 		return (NULL);
 	i = -1;
@@ -86,9 +84,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (0);
 	if ((ft_strlen(s) + 1) < len)
-		ptr = (char *) ft_calloc((ft_strlen(s) + 1), sizeof(*ptr));
+		ptr = (char *) ft_calloc((ft_strlen(s) + 1) , sizeof(*ptr));
 	else
-		ptr = (char *) ft_calloc((len + 1), sizeof(*ptr));
+		ptr = (char *) ft_calloc((len + 1) , sizeof(*ptr));
 	if (!ptr)
 		return (NULL);
 	if (start > ft_strlen(s))
@@ -112,7 +110,7 @@ char	*ft_strdup(const char *s1)
 	int		i;
 
 	i = -1;
-	ptr = ft_calloc(1 + ft_strlen(s1), sizeof(*ptr));
+	ptr = malloc((1 + ft_strlen(s1)) * sizeof(*ptr));
 	if (!ptr)
 		return (NULL);
 	while (s1[++i])

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 08:50:17 by guilmira          #+#    #+#             */
-/*   Updated: 2021/06/07 12:29:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/06/07 16:28:28 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,22 @@
 char	*writer(char *string, char **line)
 {
 	size_t	i;
-	char 	*tmp;
+	char	*tmp;
 
 	i = 0;
 	tmp = string;
-	while(string[i] != '\n' && string[i++])
+	while (string[i] != '\n' && string[i]) // i + 1
+	{
 		tmp++;
+		i++;
+	}
 	*line = ft_substr(string, 0, i);
- 	tmp = ft_strdup(++tmp);
+	if (string[i + 1])
+		tmp = ft_strdup(++tmp);
+	else
+		tmp = NULL;
 	free(string);
-	return(tmp);
+	return (tmp);
 }
 
 int	reader(int fd, char **string)
@@ -39,17 +45,18 @@ int	reader(int fd, char **string)
 		if (signal < 0)
 			return (-1);
 		buffer[signal] = '\0';
+		/* if (signal == 0)
+			buffer[signal + 1] = '\0'; */
 		if (!string[fd])
 			string[fd] = ft_strdup(buffer);
 		else
 			string[fd] = ft_strjoin_free_dup(string[fd], buffer);
 		if (ft_strchr(string[fd], '\n'))
-			break;
+			break ;
 	}
 	if (signal < BUFFER_SIZE && !(ft_strchr(string[fd], '\n')))
 		return (0);
 	return (1);
-
 }
 
 int	get_next_line(int fd, char **line)
@@ -64,11 +71,11 @@ int	get_next_line(int fd, char **line)
 		string[fd] = writer(string[fd], line);
 	if (result == 0)
 	{
-		free(string[fd]);
+		if (string[fd])
+			free(string[fd]);
 		return (0);
 	}
 	if (result == -1)
 		return (-1);
 	return (1);
 }
-
