@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 09:29:58 by guilmira          #+#    #+#             */
-/*   Updated: 2021/06/06 18:09:43 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/06/07 12:19:39 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
-char	*ft_strjoin_freebuffer(char *s1, char *s2)
+char	*ft_strjoin_free_dup(char *s1, char *s2)
 {
 	char	*ptr;
 	int		i;
@@ -74,9 +74,7 @@ char	*ft_strjoin_freebuffer(char *s1, char *s2)
 	while (s2[++j])
 		ptr[i + j] = s2[j];
 	ptr[i + j] = '\0';
-	// if (s1)
-		// free(s1);
-	//free(s2);
+	free(s1);
 	return (ptr);
 }
 
