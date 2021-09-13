@@ -6,15 +6,12 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 08:50:17 by guilmira          #+#    #+#             */
-/*   Updated: 2021/06/08 09:52:51 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/06/08 10:58:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/* The use of ft_substring to allocate memory for line means everytime
- * we call the function GNL line is reserved a new space in memory,
- * therfore is adviced to free line after each call. */
 char	*writer(char *string, char **line)
 {
 	size_t	i;

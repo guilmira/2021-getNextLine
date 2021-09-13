@@ -12,21 +12,21 @@ int	main(void)
 	//char *a = "alternate_line_nl_no_nl";
 
 	int fd = open(a, O_RDONLY);
-/* 	while (++i < lineas)
+	int j;
+ 	while ((j = get_next_line(fd, &linea)))
 	{
-		j = get_next_line(fd, &linea);
 		printf("resultado: %s\n", linea);
 		printf("%i\n", j);
 		free(linea);
-	} */
-	get_next_line(fd, &linea);
-	free(linea);
+	}
+	//get_next_line(fd, &linea);
+	//free(linea);
 	//free(linea);
 
 	printf("resultado: %s\n", linea);
 	//get_next_line(fd, &linea);
 	//free(linea);
-	system ("leaks a.out");
+	//system ("leaks a.out");
 }
 
 //esto con char *a = "41_no_nl"; impide los root leaks, que se generan al crear nuevo espacio en linea

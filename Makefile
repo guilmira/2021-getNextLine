@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/02 11:57:39 by guilmira          #+#    #+#              #
-#    Updated: 2021/06/07 13:49:34 by guilmira         ###   ########.fr        #
+#    Updated: 2021/06/08 12:35:14 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ OBJS = $(SRCS:.c=.o)
 CC = gcc -Wall -Werror -Wextra
 CCDEB = gcc -g -Wall -Werror -Wextra
 #CCDEB = gcc -g -Wall -Werror -Wextra -D BUFFER_SIZE=$(NBR)
-NBR		= 1
+NBR		= 400000
+
 
 all: $(NAME)
 $(NAME): $(OBJS)
