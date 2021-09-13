@@ -6,12 +6,17 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 08:50:17 by guilmira          #+#    #+#             */
-/*   Updated: 2021/06/08 10:58:25 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/13 16:31:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+/** PURPOSE : Uses what is on store on string
+ * and then and mallocs for the final string.
+ * NOTE - The use of ft_substring to allocate memory for line means
+ * everytime the function GNL is called, line is reserved.
+ * Consider free the line after each sucesive call to GNL. */
 char	*writer(char *string, char **line)
 {
 	size_t	i;
@@ -38,6 +43,9 @@ char	*writer(char *string, char **line)
 	return (tmp);
 }
 
+/** PURPOSE : reads line using char vector of size "BUFFER_SIZE".
+ * 1. Uses function read, stores in buffer n bytes (BUFFER_SIZE)
+ * 2. Manages space in string and joins each piece of string or char. */
 int	reader(int fd, char **string)
 {
 	char	buffer[BUFFER_SIZE + 1];
@@ -50,7 +58,7 @@ int	reader(int fd, char **string)
 		if (signal < 0)
 		{
 			if (string[fd])
-				free (string[fd]);
+				free(string[fd]);
 			return (-1);
 		}
 		buffer[signal] = '\0';
@@ -66,6 +74,11 @@ int	reader(int fd, char **string)
 	return (1);
 }
 
+/** PURPOSE : reads line from file descriptor and stores it.
+ * 1. Fd is given as an agument. Goes to it and reads NEXT line.
+ * 2. Reserves enoguh memory in declared pointer named "line".
+ * 3. Pointer to char "line", will have the complete line regardless of
+ * buffer size. GNL returns -1 in case of error.  */
 int	get_next_line(int fd, char **line)
 {
 	static char	*string[FD_SETSIZE];
