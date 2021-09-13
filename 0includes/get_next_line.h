@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 09:12:24 by guilmira          #+#    #+#             */
-/*   Updated: 2021/06/08 09:59:07 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/13 14:54:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
+# define BUFFER_SIZE 100
 
 int		get_next_line(int fd, char **line);
 char	*ft_strjoin_free_dup(char *s1, char *s2);

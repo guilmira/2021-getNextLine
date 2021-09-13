@@ -6,27 +6,39 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/02 11:57:39 by guilmira          #+#    #+#              #
-#    Updated: 2021/06/07 13:49:34 by guilmira         ###   ########.fr        #
+#    Updated: 2021/09/13 15:18:02 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = a.out
+#--------------------------------------------------------------------------------------------------------------COMPILER
+NAME	= gnl.a
+CC		= gcc
+CFLAGS	= -Wall -Werror -Wextra
+OBJS	= $(SRCS:.c=.o)
+INCLUDES	= -I ./0includes
+#-g3 -fsanitize=address
+
+#--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS = get_next_line.c get_next_line_utils.c main.c
-OBJS = $(SRCS:.c=.o)
-CC = gcc -Wall -Werror -Wextra
-CCDEB = gcc -g -Wall -Werror -Wextra
-#CCDEB = gcc -g -Wall -Werror -Wextra -D BUFFER_SIZE=$(NBR)
-NBR		= 1
+#--------------------------------------------------------------------------------------------------------------RULES
 
 all: $(NAME)
+
+%.o: %.c
+	-@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 $(NAME): $(OBJS)
-	@$(CC) -o $(NAME) $(SRCS) && ./$(NAME)
+	ar rcs ${NAME} ${OBJS}
+#@$(CC) -o $(NAME) $(SRCS) && ./$(NAME)
 m:
-	gcc -Wall -Wextra -Werror -D BUFFER_SIZE=$(NBR) $(SRCS) && ./$(NAME)
-deb: $(OBJS)
-	$(CCDEB) $(SRCS)
+	$(CC) $(FLAGS) $(OBJS) && ./$(NAME)
+
 clean:
-	@rm $(OBJS)
+	@rm -rf $(OBJS)
+
 fclean: clean
-	@rm $(NAME)
+	@rm -rf $(NAME)
+
 re: fclean all
+
+.PHONY: all bonus clean fclean re
