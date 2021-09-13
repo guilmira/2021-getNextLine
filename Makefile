@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/02 11:57:39 by guilmira          #+#    #+#              #
-#    Updated: 2021/09/13 15:18:02 by guilmira         ###   ########.fr        #
+#    Updated: 2021/09/13 15:20:23 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJS)
 	ar rcs ${NAME} ${OBJS}
 #@$(CC) -o $(NAME) $(SRCS) && ./$(NAME)
 m:
-	$(CC) $(FLAGS) $(OBJS) && ./$(NAME)
+	$(CC) $(FLAGS) $(OBJS) && ./a.out
 
 clean:
 	@rm -rf $(OBJS)
