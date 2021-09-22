@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 08:50:17 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/13 16:31:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/22 12:22:30 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	reader(int fd, char **string)
 			string[fd] = ft_strdup(buffer);
 		else
 			string[fd] = ft_strjoin_free_dup(string[fd], buffer);
-		if (ft_strchr(string[fd], '\n'))
+		if (ft_gnl_strchr(string[fd], '\n'))
 			break ;
 	}
-	if (signal < BUFFER_SIZE && !(ft_strchr(string[fd], '\n')))
+	if (signal < BUFFER_SIZE && !(ft_gnl_strchr(string[fd], '\n')))
 		return (0);
 	return (1);
 }
