@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 08:50:17 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/22 12:22:30 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/09/22 12:31:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ char	*writer(char *string, char **line)
 		tmp++;
 		i++;
 	}
-	*line = ft_substr(string, 0, i);
+	*line = ft_gnl_substr(string, 0, i);
 	if (string[i] == '\n')
 	{
 		if (string[i + 1])
-			tmp = ft_strdup(++tmp);
+			tmp = ft_gnl_strdup(++tmp);
 		else
 			tmp = NULL;
 	}
@@ -63,7 +63,7 @@ int	reader(int fd, char **string)
 		}
 		buffer[signal] = '\0';
 		if (!string[fd])
-			string[fd] = ft_strdup(buffer);
+			string[fd] = ft_gnl_strdup(buffer);
 		else
 			string[fd] = ft_strjoin_free_dup(string[fd], buffer);
 		if (ft_gnl_strchr(string[fd], '\n'))
