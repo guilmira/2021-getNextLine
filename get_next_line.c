@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 08:50:17 by guilmira          #+#    #+#             */
-/*   Updated: 2021/09/22 12:31:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2021/10/02 10:05:13 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * NOTE - The use of ft_substring to allocate memory for line means
  * everytime the function GNL is called, line is reserved.
  * Consider free the line after each sucesive call to GNL. */
-char	*writer(char *string, char **line)
+static char	*writer(char *string, char **line)
 {
 	size_t	i;
 	char	*tmp;
@@ -46,7 +46,7 @@ char	*writer(char *string, char **line)
 /** PURPOSE : reads line using char vector of size "BUFFER_SIZE".
  * 1. Uses function read, stores in buffer n bytes (BUFFER_SIZE)
  * 2. Manages space in string and joins each piece of string or char. */
-int	reader(int fd, char **string)
+static int	reader(int fd, char **string)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	int		signal;
